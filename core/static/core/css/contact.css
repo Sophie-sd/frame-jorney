@@ -1,0 +1,92 @@
+/* Стилі для секції Контакти (contact.css) - Мінімалістичний */
+
+.contact-section {
+    padding-top: 5rem; /* Трохи більше відступу зверху */
+    padding-bottom: 6rem; /* І знизу */
+    background-color: var(--background-color);
+}
+
+/* Прибрано стилі для h2 */
+/* .contact-section h2 { ... } */
+
+.contact-content {
+    display: flex;
+    justify-content: center; 
+    text-align: center; 
+}
+
+.contact-info {
+    flex-basis: 700px; /* Збільшимо ширину зони */
+    max-width: 100%;
+    /* Прибираємо стиль картки */
+    /* background-color: var(--shadow-block-color); */
+    /* padding: 2.5rem 3rem; */
+    /* border-radius: 12px; */
+    /* border-top: 4px solid var(--accent-purple); */
+    /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); */
+}
+
+.contact-info h3 {
+    font-size: 2rem; /* Ще більший заголовок */
+    color: var(--accent-yellow);
+    margin-bottom: 1rem; /* Менший відступ під заголовком */
+    display: inline-block; /* Щоб border-bottom був по ширині тексту */
+    padding-bottom: 0.5rem; /* Відступ до лінії */
+    border-bottom: 3px solid var(--accent-purple); /* Фіолетове підкреслення */
+}
+
+.contact-info p {
+    font-size: 1.15rem; /* Збільшуємо текст */
+    line-height: 1.8;
+    color: var(--text-color);
+    opacity: 0.9;
+    margin-top: 2rem; /* Відступ над текстом */
+    margin-bottom: 2.5rem; 
+    max-width: 600px; /* Ширина тексту */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-telegram {
+    display: inline-flex; 
+    align-items: center;
+    gap: 0.8rem; /* Трохи більше місця для іконки */
+    background-color: #2AABEE; 
+    border: none;
+    padding: 15px 35px; /* Ще більша кнопка */
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(42, 171, 238, 0.3); /* Додамо тінь до кнопки */
+}
+
+.btn-telegram:hover {
+    background-color: #1e96d1;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(42, 171, 238, 0.4); /* Посилена тінь */
+}
+
+/* Адаптивність для шрифтів/відступів */
+@media (max-width: 600px) {
+    .contact-section {
+        padding-top: 4rem;
+        padding-bottom: 5rem;
+    }
+    .contact-info h3 {
+        font-size: 1.8rem;
+    }
+     .contact-info p {
+        font-size: 1.05rem;
+    }
+     .btn-telegram {
+        padding: 14px 30px;
+        font-size: 1.1rem;
+     }
+}
+
+/* Прибрано contact-note */
+
+/* Прибрано адаптивність, бо тепер 1 блок центрується */ 

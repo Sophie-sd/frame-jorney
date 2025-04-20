@@ -1,0 +1,26 @@
+# .gitignore для Django проєкту
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables
+.env
+
+# Віртуальне середовище (замініть на вашу назву, якщо інша)
+env/
+venv/
+.venv/
+
+# IDEs and editors
+.idea/
+.vscode/
+
+# Django stuff
+db.sqlite3
+# /static/ - Видалено, бо core/static має бути у версіонуванні
+/media/
+staticfiles/
+
+# macOS
+.DS_Store 

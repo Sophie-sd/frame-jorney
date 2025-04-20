@@ -1,0 +1,411 @@
+/* Глобальні стилі */
+
+:root {
+    --background-color: #000000;
+    --text-color: #FFFFFF;
+    --accent-yellow: #FFD600;
+    --accent-purple: #C89FFF;
+    --shadow-block-color: #1F1F1F;
+    --font-primary: 'Gotham Bold 700 Italic', sans-serif; /* Бажаний шрифт, поки що fallback */
+    --font-fallback: Arial, Helvetica, sans-serif;
+}
+
+/* Додаємо плавний скрол для всієї сторінки */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /* Робимо градієнт більш помітним */
+    background: radial-gradient(ellipse at center, #2b2b2b 0%, #000000 80%);
+    color: var(--text-color);
+    /* font-family: var(--font-primary); */
+    font-family: var(--font-fallback);
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* --- Хедер --- */
+.main-header {
+    background-color: var(--background-color);
+    /* padding: 1rem 0; */ 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* border-bottom: 1px solid var(--shadow-block-color); */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.navbar-brand a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    /* font-style: italic; */
+}
+
+.navbar-collapse {
+    display: flex;
+}
+
+.navbar-nav {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-nav li {
+    margin-left: 2rem; 
+}
+
+.navbar-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav a:hover {
+    color: var(--accent-yellow);
+    text-decoration: none;
+}
+
+.navbar-toggler {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.toggler-icon {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* --- Основний контент --- */
+main {
+    /* padding: 2rem 0; */
+    min-height: calc(100vh - 150px);
+}
+
+/* --- Футер --- */
+.main-footer {
+    /* Повертаємо простий фон */
+    background-color: var(--shadow-block-color);
+    color: var(--text-color);
+    padding: 2rem 0 1.5rem 0; /* Залишаємо збільшені падінги */
+    margin-top: 5rem; /* Залишаємо збільшений відступ */
+    /* border-top: 1px solid rgba(255, 255, 255, 0.1); */ /* Переконались, що прибрано */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    flex-wrap: wrap;
+}
+
+.footer-left {
+    width: 100%;
+}
+
+.footer-left p {
+    margin: 0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* --- Заголовки --- */
+h1, h2, h3 {
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-top: 2.5rem;
+    /* Повертаємо border-bottom */
+    border-bottom: 2px solid var(--accent-yellow); /* Тонша жовта лінія */
+    padding-bottom: 0.6rem; /* Відповідний відступ */
+    display: inline-block;
+    /* position: relative; - Можна прибрати, якщо ::after немає */
+}
+
+/* Прибрано стилі для ::after */
+/* h2::after { ... } */
+/* h2:where(...) { ... } */
+/* .services-section h2::after, ... { ... } */
+
+/* --- Кнопки --- */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--accent-purple);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #a97de0;
+    transform: translateY(-2px);
+}
+
+/* --- Адаптивність --- */
+
+/* Планшети */
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+
+    .navbar {
+        padding: 1rem 15px;
+    }
+
+    .navbar-toggler {
+        display: block;
+        z-index: 1100;
+        position: relative;
+    }
+
+    .navbar-toggler.active .top-bar {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    .navbar-toggler.active .middle-bar {
+        opacity: 0;
+    }
+    .navbar-toggler.active .bottom-bar {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .navbar-collapse {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--shadow-block-color);
+        padding: 1rem 0;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        z-index: 1050;
+    }
+
+    .navbar-collapse.active {
+        display: block;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .navbar-nav li {
+        margin: 0.5rem 0;
+        margin-left: 0; /* Скидаємо відступ для мобільних */
+    }
+
+    .navbar-nav li:last-child {
+        margin-bottom: 0;
+    }
+
+    .navbar-nav a {
+        padding: 0.5rem 1rem;
+        display: block; /* Робимо посилання блочними */
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Телефони */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.8rem; }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* --- Фіксована кнопка контакту --- */
+.fixed-contact-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    background-color: var(--accent-purple);
+    color: var(--text-color);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Має бути над контентом, але під модалкою */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.fixed-contact-btn svg {
+    width: 28px;
+    height: 28px;
+}
+
+.fixed-contact-btn:hover {
+    background-color: #a97de0; /* Трохи темніший фіолетовий */
+    transform: scale(1.1);
+}
+
+/* --- Модальне вікно контакту --- */
+.contact-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1050; /* Має бути над усім */
+    display: none; /* Спочатку приховано */
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-modal.active {
+    display: flex; /* Показуємо при додаванні класу active */
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Додаємо розмиття фону, якщо можливо */
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+}
+
+.modal-content {
+    position: relative;
+    background-color: var(--shadow-block-color);
+    padding: 2.5rem 3rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    z-index: 1051;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    border-top: 4px solid var(--accent-yellow);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: var(--text-color);
+    opacity: 0.6;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: opacity 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    opacity: 1;
+}
+
+.modal-content h3 {
+    font-size: 1.8rem;
+    color: var(--accent-yellow);
+    margin-top: 0; /* Скидаємо верхній margin */
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    font-size: 1.05rem;
+    color: var(--text-color);
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.btn-modal-telegram {
+    /* Використовуємо базові стилі кнопки Telegram з contact.css */
+    display: inline-flex; 
+    align-items: center;
+    gap: 0.7rem;
+    background-color: #2AABEE; 
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-modal-telegram:hover {
+    background-color: #1e96d1;
+    transform: translateY(-2px);
+}
+
+.btn-modal-telegram svg {
+    width: 20px;
+    height: 20px;
+} 

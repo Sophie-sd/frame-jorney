@@ -1,0 +1,118 @@
+/* Стилі для секції Послуги (services.css) - Оновлений дизайн */
+
+.services-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.services-section h2 {
+    text-align: center; /* Центруємо заголовок секції */
+    margin-bottom: 3rem; /* Більший відступ після заголовка */
+    display: block; /* Щоб займав всю ширину і центрувався */
+    border-bottom: none; /* Прибираємо лінію під заголовком секції */
+}
+
+.services-list {
+    display: flex; /* Змінюємо на Flexbox */
+    flex-wrap: wrap; /* Дозволяємо переносити елементи */
+    justify-content: center; /* Центруємо елементи по горизонталі */
+    gap: 2rem;
+    /* Прибираємо grid-template-columns */
+}
+
+.service-item {
+    background-color: var(--shadow-block-color); /* Поточний фон */
+    padding: 2rem 1.5rem;
+    border-radius: 10px; /* Трохи кругліші кути */
+    text-align: center;
+    border: 1px solid transparent; /* Починаємо з прозорої рамки */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease; /* Додаємо transition для фону */
+    display: flex;
+    flex-direction: column;
+    /* Задаємо розміри для flex-елементів */
+    flex-basis: 280px; /* Мінімальна ширина, як у minmax */
+    flex-grow: 1; /* Дозволяємо рости */
+    max-width: calc(33.333% - 1.34rem); /* Макс. ширина ~1/3 мінус gap */
+    /* Якщо елемент 1 чи 2 - max-width обмежить розтягування */
+    box-sizing: border-box; /* Включаємо padding/border у розрахунок ширини */
+}
+
+.service-item:hover {
+    transform: translateY(-8px) scale(1.03); /* Збільшення і підйом */
+    /* Тінь з фіолетовим акцентом */
+    box-shadow: 0 10px 25px rgba(200, 159, 255, 0.2), 0 5px 10px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent-purple); /* Фіолетова рамка при наведенні */
+    background-color: #2a2a2a; /* Трохи світліший фон при наведенні */
+}
+
+.service-emoji {
+    font-size: 2.5rem; /* Великий розмір емодзі */
+    margin-bottom: 1.5rem; /* Більший відступ */
+    display: inline-block; /* Щоб background працював */
+    /* background-color: rgba(255, 214, 0, 0.1); */ /* Легкий жовтий фон для іконки - можна розкоментувати */
+    /* border-radius: 50%; */ /* Якщо хочемо круглий фон */
+    /* padding: 0.5rem; */
+    /* line-height: 1; */ /* Щоб емодзі був по центру фону */
+}
+
+.service-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent-yellow); /* Залишаємо жовтий для заголовків */
+    margin-bottom: 0.8rem;
+    /* font-style: italic;  Можна додати, якщо потрібно */
+}
+
+.service-description {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    opacity: 0.85;
+    line-height: 1.5;
+    /* Щоб опис займав місце і вирівнював картки по висоті */
+    flex-grow: 1; 
+}
+
+/* Адаптивність для секції Послуги */
+
+@media (max-width: 992px) { /* Додаємо брейкпоінт для кращого контролю */
+    .service-item {
+        max-width: calc(50% - 1rem); /* ~2 колонки мінус gap */
+    }
+}
+
+@media (max-width: 768px) {
+    .services-list {
+        gap: 1.5rem;
+        /* Прибираємо grid налаштування */
+    }
+    .service-item {
+        padding: 1.5rem 1rem;
+        flex-basis: 250px; /* Трохи менша база */
+        max-width: calc(50% - 0.75rem); /* Все ще ~2 колонки мінус gap */
+    }
+    .service-title {
+        font-size: 1.3rem;
+    }
+    .service-emoji {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 520px) { /* Змінюємо брейкпоінт для переходу на 1 колонку */
+    .services-list {
+        gap: 1rem;
+        /* Прибираємо grid налаштування */
+    }
+    .service-item {
+        padding: 1.2rem 1rem;
+        flex-basis: 100%; /* Повна ширина */
+        max-width: 90%; /* Невелике обмеження, щоб не прилипало до країв */
+    }
+     .service-title {
+        font-size: 1.2rem;
+    }
+    .service-description {
+        font-size: 0.9rem;
+    }
+}

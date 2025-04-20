@@ -1,0 +1,130 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+structrules.mdk
+
+! Зайди сюди після команди ~st !
+project: Frame Jorney — структура та організація Django-проєкту
+
+## 🔧 Корінь проєкту
+- manage.py  
+- .gitignore  
+- requirements.txt  
+- config/ — налаштування Django  
+- core/ — основний Django-додаток  
+- media/ — завантажені користувачами файли  
+- staticfiles/ — зібрані статичні файли (для production)
+
+## ⚙️ Налаштування (config/settings/)
+Папка config/settings/ повинна містити:
+- __init__.py
+- base.py — глобальні налаштування (apps, middleware, templates, static, media)
+- dev.py — для розробки: DEBUG = True, SQLite
+- prod.py — для продакшну: DEBUG = False, Postgres, WhiteNoise, безпечні налаштування
+
+Файли wsgi.py та manage.py використовують config.settings.dev за замовчуванням.
+
+## 🧩 Django App: core/
+Містить:
+- models.py, views.py, urls.py, admin.py
+- templates/core/ — шаблони HTML
+- static/core/ — всі стилі, скрипти, зображення
+
+## 🧱 Шаблони (templates/core/)
+Обов’язкові шаблони:
+- base.html — головний (layout, {% block content %}, підключення base.css)
+- home.html, about.html, portfolio.html, reviews.html, services.html, contact.html
+
+Кожен шаблон має:
+- Підключення base.css
+- Окремий css-файл для відповідної сторінки
+
+## 🎨 CSS (static/core/css/)
+Має містити:
+- base.css — глобальні стилі (фон, шрифт, кольори, navbar, footer)
+- окремі CSS: home.css, about.css, portfolio.css, reviews.css, services.css, contact.css
+
+## 📜 JS та Media
+- JS: static/core/js/ — скрипти проєкту
+- Media: static/core/media/ — локальні зображення
+
+## 📁 Статичні файли (налаштування)
+У settings/base.py:
+- STATIC_URL = '/static/'
+- MEDIA_URL = '/media/'
+- STATICFILES_DIRS = [BASE_DIR / 'core' / 'static']
+
+У settings/prod.py:
+- STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+## 📱 Viewport
+У кожному HTML-шаблоні обов’язково має бути:
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+project: Frame Jorney — структура та організація Django-проєкту
+
+## 🔧 Корінь проєкту
+- manage.py  
+- .gitignore  
+- requirements.txt  
+- config/ — налаштування Django  
+- core/ — основний Django-додаток  
+- media/ — завантажені користувачами файли  
+- staticfiles/ — зібрані статичні файли (для production)
+
+## ⚙️ Налаштування (config/settings/)
+Папка config/settings/ повинна містити:
+- __init__.py
+- base.py — глобальні налаштування (apps, middleware, templates, static, media)
+- dev.py — для розробки: DEBUG = True, SQLite
+- prod.py — для продакшну: DEBUG = False, Postgres, WhiteNoise, безпечні налаштування
+
+Файли wsgi.py та manage.py використовують config.settings.dev за замовчуванням.
+
+## 🧩 Django App: core/
+Містить:
+- models.py, views.py, urls.py, admin.py
+- templates/core/ — шаблони HTML
+- static/core/ — всі стилі, скрипти, зображення
+
+## 🧱 Шаблони (templates/core/)
+Обов’язкові шаблони:
+- base.html — головний (layout, {% block content %}, підключення base.css)
+- home.html, about.html, portfolio.html, reviews.html, services.html, contact.html
+
+Кожен шаблон має:
+- Підключення base.css
+- Окремий css-файл для відповідної сторінки
+
+## 🎨 CSS (static/core/css/)
+Має містити:
+- base.css — глобальні стилі (фон, шрифт, кольори, navbar, footer)
+- окремі CSS: home.css, about.css, portfolio.css, reviews.css, services.css, contact.css
+
+## 📜 JS та Media
+- JS: static/core/js/ — скрипти проєкту
+- Media: static/core/media/ — локальні зображення
+
+## 📁 Статичні файли (налаштування)
+У settings/base.py:
+- STATIC_URL = '/static/'
+- MEDIA_URL = '/media/'
+- STATICFILES_DIRS = [BASE_DIR / 'core' / 'static']
+
+У settings/prod.py:
+- STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+## 📱 Viewport
+У кожному HTML-шаблоні обов’язково має бути:
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+Уважно прочитай і виконай чітко! Якщо питання є - питай! 
+ 
+Дотримуйся цієї структури без відхилень
+ • Ніколи не створюй нових директорій, якщо це не описано тут
+ • Якщо створюється новий шаблон — він має лежати в templates/core/
+ • Нові CSS-файли — тільки в static/core/css/
+ • JS-файли — тільки в static/core/js/
+ • Статичні медіа — в static/core/media/

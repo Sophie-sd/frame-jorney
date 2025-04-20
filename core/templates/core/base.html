@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Frame Jorney{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+
+    <!-- Tiny Slider CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+
+    <!-- AOS (Animate On Scroll) CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar container">
+            <div class="navbar-brand">
+                <a href="{% url 'home' %}">Frame Jorney</a>
+            </div>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav">
+                    <li><a href="#services">Послуги</a></li>
+                    <li><a href="#portfolio">Портфоліо</a></li>
+                    <li><a href="#reviews">Відгуки</a></li>
+                    <li><a href="#about">Про мене</a></li>
+                    <li><a href="#contact">Контакти</a></li>
+                </ul>
+            </div>
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                <span class="toggler-icon top-bar"></span>
+                <span class="toggler-icon middle-bar"></span>
+                <span class="toggler-icon bottom-bar"></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+            <p>Це базовий шаблон. Контент буде тут.</p>
+        {% endblock %}
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content container">
+            <div class="footer-left">
+                <p>&copy; {% now "Y" %} Frame Jorney. Усі права захищено.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Кнопка виклику модального вікна -->
+    <button class="fixed-contact-btn" id="open-contact-modal" aria-label="Зв'язатися">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </button>
+
+    <!-- Модальне вікно для контакту -->
+    <div class="contact-modal" id="contact-modal">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close-btn" id="close-contact-modal" aria-label="Закрити">&times;</button>
+            <h3>Зв'язатися зі мною</h3>
+            <p>Найпростіший спосіб поставити запитання або обговорити проєкт – написати мені в Telegram.</p>
+            <a href="https://t.me/yaroslavvideoeditor" class="btn btn-modal-telegram" target="_blank" rel="noopener noreferrer">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                Написати в Telegram
+            </a>
+        </div>
+    </div>
+
+    <!-- Tiny Slider JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js"></script>
+
+    <!-- AOS (Animate On Scroll) JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script src="{% static 'core/js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
