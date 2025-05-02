@@ -4,62 +4,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (navbarToggler && navbarCollapse) {
         navbarToggler.addEventListener('click', () => {
-            // Перемикаємо клас active на кнопці
             navbarToggler.classList.toggle('active');
-            // Перемикаємо клас active на меню
             navbarCollapse.classList.toggle('active');
-
-            // Опціонально: блокування скролу сторінки при відкритому меню
-            // document.body.classList.toggle('no-scroll'); 
-            // Потрібно додати в CSS: body.no-scroll { overflow: hidden; }
         });
 
-        // Закриття меню при кліку на посилання (для лендінгу)
         const navLinks = navbarCollapse.querySelectorAll('a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 if (navbarCollapse.classList.contains('active')) {
                     navbarToggler.classList.remove('active');
                     navbarCollapse.classList.remove('active');
-                    // document.body.classList.remove('no-scroll');
                 }
             });
         });
     }
 
-    // --- Слайдер Відгуків (Tiny Slider) --- 
     const reviewsSlider = document.querySelector('.reviews-list.tns-slider');
     if (reviewsSlider) {
         const slider = tns({
             container: reviewsSlider,
-            items: 1, // Скільки слайдів видно на мобільних
+            items: 1,
             slideBy: 1,
             autoplay: false,
-            controlsContainer: ".reviews-controls", // Контейнер для кнопок
+            loop: false,
+            controlsContainer: ".reviews-controls",
             prevButton: ".reviews-controls .prev",
             nextButton: ".reviews-controls .next",
-            nav: false, // Вимикаємо точки навігації
-            mouseDrag: true, // Дозволяємо перетягування мишкою
-            gutter: 20, // Відстань між слайдами
+            nav: false,
+            mouseDrag: true,
+            gutter: 20,
             responsive: {
-                600: { // від 600px ширини екрану
-                    items: 2 // Показуємо 2 слайди
-                },
-                992: { // від 992px ширини екрану
-                    items: 3 // Показуємо 3 слайди
-                }
+                600: { items: 2 },
+                992: { items: 3 }
             }
         });
     }
 
-    // --- Ініціалізація AOS (Animate On Scroll) ---
     AOS.init({
-        duration: 800, // Тривалість анімації
-        once: true, // Анімація спрацьовує тільки один раз
-        offset: 50 // Відступ від низу екрану для спрацювання
+        duration: 800,
+        once: true,
+        offset: 50
     });
 
-    // --- Модальне вікно контакту ---
     const openModalBtn = document.getElementById('open-contact-modal');
     const closeModalBtn = document.getElementById('close-contact-modal');
     const contactModal = document.getElementById('contact-modal');
@@ -82,14 +68,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (modalOverlay) {
-        // Закриваємо по кліку на фон
         modalOverlay.addEventListener('click', closeModal);
     }
     
-    // Закриваємо по натисканню Esc
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && contactModal && contactModal.classList.contains('active')) {
             closeModal();
         }
     });
+
+    const lightbox = GLightbox({
+        selector: '.glightbox',
+    });
+    if (lightbox) {
+        lightbox.reload();
+    }
+
+    const showMoreBtn = document.getElementById('show-more-portfolio');
+    if (showMoreBtn) {
+        showMoreBtn.addEventListener('click', () => {
+            const hiddenItems = document.querySelectorAll('.portfolio-item-hidden');
+            hiddenItems.forEach(item => {
+                item.classList.remove('portfolio-item-hidden');
+                item.style.animation = 'fadeIn 0.5s ease-out forwards';
+            });
+            
+            showMoreBtn.style.display = 'none';
+
+            if (typeof lightbox !== 'undefined' && lightbox) {
+                lightbox.reload();
+            }
+        });
+    }
+
 }); 

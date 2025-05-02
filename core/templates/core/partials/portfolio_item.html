@@ -1,0 +1,40 @@
+{% load static %}
+{% comment %} core/templates/core/partials/portfolio_item.html {% endcomment %}
+<div class="portfolio-item" data-aos="zoom-in" data-aos-delay="{{ loop_counter0|divisibleby:3|yesno:'300,200,100' }}">
+    {% with video_static_path='core/media/'|add:video_filename %}
+    {# Посилання для GLightbox: використовуємо title_ukr для title #}
+    <a href="{% static video_static_path %}"
+       class="portfolio-image-link glightbox"
+       data-glightbox="type: video; title: {{ title_ukr|escapejs }}; description: .portfolio-desc-{{ video_filename|slugify }}">
+        
+        {# Прев'ю: шлях генерується з filename #}
+        {% with preview_image_name=video_filename|slice:":-4"|add:".png" %}
+        {% with preview_image_path='core/media/'|add:preview_image_name %}
+        {% static preview_image_path as preview_static_url %}
+        <img src="{{ preview_static_url }}"
+             alt="{{ title_ukr }}"
+             class="portfolio-thumbnail">
+        {% endwith %}
+        {% endwith %}
+        
+        {# Видимий заголовок: використовуємо title_ukr #}
+        <h3 class="portfolio-visible-title">{{ title_ukr }}</h3>
+        
+        {# Іконка Play #}
+        <div class="play-icon-overlay">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="rgba(255, 255, 255, 0.8)" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        </div>
+
+        {# Блок, що з'являється при наведенні (тепер всередині посилання) #}
+        <div class="portfolio-info">
+            {# Опис, що з'являється при наведенні - використовуємо змінну description #}
+            <p class="portfolio-hover-description">{{ description }}</p>
+        </div>
+
+        {# Прихований div з описом СПЕЦІАЛЬНО для GLightbox (тепер всередині посилання) #}
+        <div class="glightbox-desc portfolio-desc-{{ video_filename|slugify }}">
+            {{ description }}
+        </div>
+    </a>
+    {% endwith %}
+</div> 

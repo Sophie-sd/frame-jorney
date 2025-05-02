@@ -5,6 +5,7 @@
     --text-color: #FFFFFF;
     --accent-yellow: #FFD600;
     --accent-purple: #C89FFF;
+    --accent-purple-rgb: 200, 159, 255; /* Додано RGB версію для rgba() */
     --shadow-block-color: #1F1F1F;
     --font-primary: 'Gotham Bold 700 Italic', sans-serif; /* Бажаний шрифт, поки що fallback */
     --font-fallback: Arial, Helvetica, sans-serif;
@@ -21,7 +22,7 @@ body {
     /* Робимо градієнт більш помітним */
     background: radial-gradient(ellipse at center, #2b2b2b 0%, #000000 80%);
     color: var(--text-color);
-    /* font-family: var(--font-primary); */
+    /* font-family: var(--font-primary); */ /* TODO: Підключити шрифт Gotham */
     font-family: var(--font-fallback);
     box-sizing: border-box;
     font-size: 16px;
@@ -36,16 +37,15 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
+    text-align: center; /* Додано для центрування inline-block заголовків h2 */
 }
 
 /* --- Хедер --- */
 .main-header {
     background-color: var(--background-color);
-    /* padding: 1rem 0; */ 
     position: sticky;
     top: 0;
     z-index: 1000;
-    /* border-bottom: 1px solid var(--shadow-block-color); */
 }
 
 .navbar {
@@ -60,7 +60,6 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
-    /* font-style: italic; */
 }
 
 .navbar-collapse {
@@ -75,7 +74,7 @@ body {
 }
 
 .navbar-nav li {
-    margin-left: 2rem; 
+    margin-left: 2rem;
 }
 
 .navbar-nav a {
@@ -109,18 +108,15 @@ body {
 
 /* --- Основний контент --- */
 main {
-    /* padding: 2rem 0; */
-    min-height: calc(100vh - 150px);
+    min-height: calc(100vh - 150px); /* Висота залежить від висоти хедера і футера */
 }
 
 /* --- Футер --- */
 .main-footer {
-    /* Повертаємо простий фон */
     background-color: var(--shadow-block-color);
     color: var(--text-color);
-    padding: 2rem 0 1.5rem 0; /* Залишаємо збільшені падінги */
-    margin-top: 5rem; /* Залишаємо збільшений відступ */
-    /* border-top: 1px solid rgba(255, 255, 255, 0.1); */ /* Переконались, що прибрано */
+    padding: 2rem 0 1.5rem 0; /* Падінги зверху/знизу */
+    margin-top: 5rem; /* Відступ зверху */
 }
 
 .footer-content {
@@ -158,18 +154,16 @@ h1 {
 h2 {
     font-size: 2.5rem;
     line-height: 1.2;
-    margin-top: 2.5rem;
-    /* Повертаємо border-bottom */
-    border-bottom: 2px solid var(--accent-yellow); /* Тонша жовта лінія */
-    padding-bottom: 0.6rem; /* Відповідний відступ */
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    border-bottom: none;
+    padding-bottom: 0;
+    color: transparent;
+    background: linear-gradient(90deg, var(--accent-yellow), var(--accent-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
     display: inline-block;
-    /* position: relative; - Можна прибрати, якщо ::after немає */
 }
-
-/* Прибрано стилі для ::after */
-/* h2::after { ... } */
-/* h2:where(...) { ... } */
-/* .services-section h2::after, ... { ... } */
 
 /* --- Кнопки --- */
 .btn {
@@ -200,7 +194,11 @@ h2 {
         font-size: 15px;
     }
     h1 { font-size: 2.5rem; }
-    h2 { font-size: 2rem; }
+    h2 {
+        font-size: 2rem;
+        margin-top: 3rem;
+        margin-bottom: 2.5rem;
+    }
 
     .navbar {
         padding: 1rem 15px;
@@ -225,7 +223,7 @@ h2 {
     .navbar-collapse {
         display: none;
         position: absolute;
-        top: 100%;
+        top: 100%; /* Змінено з 60px на 100% від висоти хедера */
         left: 0;
         width: 100%;
         background-color: var(--shadow-block-color);
@@ -270,7 +268,11 @@ h2 {
         font-size: 14px;
     }
     h1 { font-size: 2rem; }
-    h2 { font-size: 1.8rem; }
+    h2 {
+        font-size: 1.8rem;
+        margin-top: 2.5rem;
+        margin-bottom: 2rem;
+    }
 
     .btn {
         padding: 10px 20px;

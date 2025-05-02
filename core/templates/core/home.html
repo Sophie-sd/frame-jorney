@@ -5,12 +5,12 @@
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
-    {# Тимчасово видаляю лінки на CSS секцій, які ще не створені #}
-    <link rel="stylesheet" href="{% static 'core/css/about.css' %}">
+    {# Підключаємо стилі для всіх секцій #}
+    <link rel="stylesheet" href="{% static 'core/css/services.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/portfolio.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/reviews.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/about.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/contact.css' %}">
-    <link rel="stylesheet" href="{% static 'core/css/services.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -30,223 +30,204 @@
         </div>
     </div>
 </section>
+{# --- Running Text Section --- #}
+<div class="running-text-container">
+    <div class="running-text-content">
+        <span>Знижка на перший монтаж для тих, хто зі мною вперше - давай знайомитись</span>
+        <span>Знижка на перший монтаж для тих, хто зі мною вперше - давай знайомитись</span>
+        <span>Знижка на перший монтаж для тих, хто зі мною вперше - давай знайомитись</span>
+        <span>Знижка на перший монтаж для тих, хто зі мною вперше - давай знайомитись</span>
+    </div>
+</div>
 
 {# --- Services Section --- #}
-<section id="services" class="services-section container" data-aos="fade-up">
-    <h2 data-aos="fade-down">Послуги</h2>
-    <div class="services-list">
-        <div class="service-item" data-aos="fade-up" data-aos-delay="100">
-            <span class="service-emoji">🎧</span>
-            <h3 class="service-title">Саунд-дизайн</h3>
-            <p class="service-description">Створення глибокого, цілісного звуку, що підсилює наратив.</p>
-        </div>
-        <div class="service-item" data-aos="fade-up" data-aos-delay="200">
-            <span class="service-emoji">🎞</span>
-            <h3 class="service-title">Монтаж під ключ</h3>
-            <p class="service-description">Повна збірка відео — від сирого матеріалу до готового продукту.</p>
-        </div>
-        <div class="service-item" data-aos="fade-up" data-aos-delay="300">
-            <span class="service-emoji">🎨</span>
-            <h3 class="service-title">Кольорокорекція</h3>
-            <p class="service-description">Оптимізація кольору та світла для передачі атмосфери.</p>
-        </div>
-        <div class="service-item" data-aos="fade-up" data-aos-delay="100">
-            <span class="service-emoji">⚡</span>
-            <h3 class="service-title">Динамічні ролики</h3>
-            <p class="service-description">Монтаж для реклами, TikTok, Shorts — швидко, ритмічно, акцентовано.</p>
-        </div>
-        <div class="service-item" data-aos="fade-up" data-aos-delay="200">
-            <span class="service-emoji">🧠</span>
-            <h3 class="service-title">Монтаж зі змістом</h3>
-            <p class="service-description">Редагування, що підкреслює ідею, а не лише форму.</p>
-        </div>
-        <div class="service-item" data-aos="fade-up" data-aos-delay="300">
-            <span class="service-emoji">🧰</span>
-            <h3 class="service-title">Адаптації</h3>
-            <p class="service-description">Професійні правки, оновлення, підготовка під формат/платформу.</p>
+<section id="services" class="services-section" data-aos="fade-up">
+    <div class="container">
+        <h2 data-aos="fade-down">Послуги</h2>
+        <div class="services-list">
+            <div class="service-item" data-aos="fade-up" data-aos-delay="100">
+                <span class="service-emoji">🎧</span>
+                <h3 class="service-title">Саунд-дизайн</h3>
+                <p class="service-description">Створення глибокого, цілісного звуку, що підсилює наратив.</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="200">
+                <span class="service-emoji">🎞</span>
+                <h3 class="service-title">Монтаж під ключ</h3>
+                <p class="service-description">Повна збірка відео — від сирого матеріалу до готового продукту.</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="300">
+                <span class="service-emoji">🎨</span>
+                <h3 class="service-title">Кольорокорекція</h3>
+                <p class="service-description">Оптимізація кольору та світла для передачі атмосфери.</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="100">
+                <span class="service-emoji">⚡</span>
+                <h3 class="service-title">Динамічні ролики</h3>
+                <p class="service-description">Монтаж для реклами, TikTok, Shorts — швидко, ритмічно, акцентовано.</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="200">
+                <span class="service-emoji">🧠</span>
+                <h3 class="service-title">Монтаж зі змістом</h3>
+                <p class="service-description">Редагування, що підкреслює ідею, а не лише форму.</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="300">
+                <span class="service-emoji">🧰</span>
+                <h3 class="service-title">Адаптації</h3>
+                <p class="service-description">Професійні правки, оновлення, підготовка під формат/платформу.</p>
+            </div>
         </div>
     </div>
 </section>
 
 {# --- Portfolio Section --- #}
-<section id="portfolio" class="portfolio-section container" data-aos="fade-up">
-    <h2 data-aos="fade-down">ПОРТФОЛІО</h2>
-    <div class="portfolio-grid">
-        <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="100" data-category="tiktok">
-            <a href="#" class="portfolio-image-link">
-                <img src="https://via.placeholder.com/400x300/C89FFF/000000?text=TikTok+Video" alt="Робота 1 (TikTok)" class="portfolio-thumbnail">
-            </a>
-            <div class="portfolio-info">
-                <h3><a href="#">Назва роботи 1</a></h3>
-                <p>TikTok</p>
-            </div>
+<section id="portfolio" class="portfolio-section" data-aos="fade-up">
+    <div class="container">
+        <h2 data-aos="fade-down">ПОРТФОЛІО</h2>
+        <div class="portfolio-grid">
+            {# Оновлений цикл: додаємо обгортку та клас для приховування #}
+            {% for video_data in video_files %}
+                <div class="portfolio-item-wrapper {% if forloop.counter > 3 %}portfolio-item-hidden{% endif %}">
+                    {# Оновлено передачу змінних: додано title_ukr, виправлено description #}
+                    {% include "core/partials/portfolio_item.html" with video_filename=video_data.filename title_ukr=video_data.title_ukr description=video_data.description video_index=forloop.counter loop_counter0=forloop.counter0 loop_counter=forloop.counter %}
+                </div>
+            {% empty %}
+                <p>Поки що немає робіт для відображення.</p>
+            {% endfor %}
         </div>
-        <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="200" data-category="ad">
-            <a href="#" class="portfolio-image-link">
-                <img src="https://via.placeholder.com/400x300/FFD600/000000?text=Ad+Video" alt="Робота 2 (Реклама)" class="portfolio-thumbnail">
-            </a>
-            <div class="portfolio-info">
-                <h3><a href="#">Назва роботи 2</a></h3>
-                <p>Реклама</p>
-            </div>
-        </div>
-        <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="300" data-category="clip">
-            <a href="#" class="portfolio-image-link">
-                <img src="https://via.placeholder.com/400x300/1F1F1F/FFFFFF?text=Music+Clip" alt="Робота 3 (Кліп)" class="portfolio-thumbnail">
-            </a>
-            <div class="portfolio-info">
-                <h3><a href="#">Назва роботи 3</a></h3>
-                <p>Кліп</p>
-            </div>
-        </div>
-        <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="100" data-category="tiktok">
-            <a href="#" class="portfolio-image-link">
-                <img src="https://via.placeholder.com/400x300/C89FFF/000000?text=TikTok+Video+2" alt="Робота 4 (TikTok)" class="portfolio-thumbnail">
-            </a>
-            <div class="portfolio-info">
-                <h3><a href="#">Назва роботи 4</a></h3>
-                <p>TikTok</p>
-            </div>
-        </div>
-        <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="200" data-category="ad">
-            <a href="#" class="portfolio-image-link">
-                <img src="https://via.placeholder.com/400x300/FFD600/000000?text=Ad+Video+2" alt="Робота 5 (Реклама)" class="portfolio-thumbnail">
-            </a>
-            <div class="portfolio-info">
-                <h3><a href="#">Назва роботи 5</a></h3>
-                <p>Реклама</p>
-            </div>
-        </div>
-        <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="300" data-category="clip">
-            <a href="#" class="portfolio-image-link">
-                <img src="https://via.placeholder.com/400x300/1F1F1F/FFFFFF?text=Music+Clip+2" alt="Робота 6 (Кліп)" class="portfolio-thumbnail">
-            </a>
-            <div class="portfolio-info">
-                <h3><a href="#">Назва роботи 6</a></h3>
-                <p>Кліп</p>
-            </div>
+        {# Додаємо контейнер для кнопки #}
+        <div class="portfolio-show-more-btn-container">
+             {# Показуємо кнопку тільки якщо є більше 3 відео #}
+            {% if video_files|length > 3 %}
+            <button id="show-more-portfolio" class="btn">Показати більше</button>
+            {% endif %}
         </div>
     </div>
 </section>
 
 {# --- Reviews Section --- #}
-<section id="reviews" class="reviews-section container" data-aos="fade-up">
-    <div class="reviews-slider-container">
-        <div class="reviews-list tns-slider">
-            {# Відгук 1 #}
-            <div class="review-item" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                <div class="review-content">
-                    <span class="review-quote-icon">“</span>
-                    <p class="review-text">Дуже задоволений роботою Ярослава! Монтаж на вищому рівні, все вчасно і з увагою до деталей. Рекомендую!</p>
+<section id="reviews" class="reviews-section" data-aos="fade-up">
+    <div class="container">
+        <h2 data-aos="fade-down">Відгуки</h2>
+        <div class="reviews-slider-container">
+            <div class="reviews-list tns-slider">
+                {# Відгук 1 #}
+                <div class="review-item" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                    <div class="review-content">
+                        <span class="review-quote-icon">"</span>
+                        <p class="review-text">Дуже задоволений роботою Ярослава! Монтаж на вищому рівні, все вчасно і з увагою до деталей. Рекомендую!</p>
+                    </div>
+                    <div class="review-author">
+                        <img src="{% static 'core/media/ivan-petrenko.png' %}" alt="Іван Петренко" class="review-avatar">
+                        <span class="author-name">Іван Петренко</span>
+                    </div>
                 </div>
-                <div class="review-author">
-                    <img src="https://via.placeholder.com/40x40/FFD600/000000?text=IP" alt="Іван Петренко" class="review-avatar">
-                    <span class="author-name">Іван Петренко</span>
+                {# Відгук 2 #}
+                <div class="review-item">
+                    <div class="review-content">
+                        <span class="review-quote-icon">"</span>
+                        <p class="review-text">Професіонал своєї справи! Frame Jorney допомогли втілити ідею рекламного ролика саме так, як ми бачили. Швидко та якісно.</p>
+                    </div>
+                    <div class="review-author">
+                        <img src="{% static 'core/media/olena-kovalchuk.png' %}" alt="Олена Ковальчук" class="review-avatar">
+                        <span class="author-name">Олена Ковальчук</span>
+                    </div>
+                </div>
+                {# Відгук 3 #}
+                <div class="review-item">
+                    <div class="review-content">
+                        <span class="review-quote-icon">"</span>
+                        <p class="review-text">Ярослав відчув настрій мого музичного кліпу і підкреслив його монтажем. Працювати було легко і приємно. Топ!</p>
+                    </div>
+                    <div class="review-author">
+                        <img src="{% static 'core/media/andriy-socolov.png' %}" alt="Андрій Соколов" class="review-avatar">
+                        <span class="author-name">Андрій Соколов</span>
+                    </div>
+                </div>
+                {# Відгук 4 #}
+                <div class="review-item">
+                    <div class="review-content">
+                        <span class="review-quote-icon">"</span>
+                        <p class="review-text">Найкращий монтажер, з яким доводилось працювати. Завжди на зв'язку, пропонує круті ідеї.</p>
+                    </div>
+                    <div class="review-author">
+                        <img src="{% static 'core/media/maksim.png' %}" alt="Максим Зайченко" class="review-avatar">
+                        <span class="author-name">Максим Зайченко</span>
+                    </div>
+                </div>
+                {# Відгук 5 #}
+                <div class="review-item">
+                    <div class="review-content">
+                        <span class="review-quote-icon">"</span>
+                        <p class="review-text">Результат перевершив очікування! Відео вийшло динамічним і стильним. Дякую Frame Jorney!</p>
+                    </div>
+                    <div class="review-author">
+                        <img src="{% static 'core/media/julia-tkach.png' %}" alt="Юлія Ткач" class="review-avatar">
+                        <span class="author-name">Юлія Ткач</span>
+                    </div>
+                </div>
+                {# Відгук 6 #}
+                <div class="review-item">
+                    <div class="review-content">
+                        <span class="review-quote-icon">"</span>
+                        <p class="review-text">Все чітко, швидко і по ділу. Ярослав розуміє завдання з півслова. Обов'язково звернусь ще.</p>
+                    </div>
+                    <div class="review-author">
+                        <img src="{% static 'core/media/serhii-lysenko.png' %}" alt="Сергій Лисенко" class="review-avatar">
+                        <span class="author-name">Сергій Лисенко</span>
+                    </div>
+                </div>
+                {# Відгук 7 #}
+                <div class="review-item">
+                    <div class="review-content">
+                        <span class="review-quote-icon">"</span>
+                        <p class="review-text">Креативний підхід та відмінне почуття ритму. Мій проєкт заграв новими фарбами!</p>
+                    </div>
+                    <div class="review-author">
+                        <img src="{% static 'core/media/viktoria.png' %}" alt="Вікторія Мельник" class="review-avatar">
+                        <span class="author-name">Вікторія Мельник</span>
+                    </div>
                 </div>
             </div>
-            {# Відгук 2 #}
-            <div class="review-item">
-                <div class="review-content">
-                    <span class="review-quote-icon">“</span>
-                    <p class="review-text">Професіонал своєї справи! Frame Jorney допомогли втілити ідею рекламного ролика саме так, як ми бачили. Швидко та якісно.</p>
-                </div>
-                <div class="review-author">
-                    <img src="https://via.placeholder.com/40x40/C89FFF/000000?text=OK" alt="Олена Ковальчук" class="review-avatar">
-                    <span class="author-name">Олена Ковальчук</span>
-                </div>
+            <div class="reviews-controls">
+                <button class="prev" aria-label="Попередній відгук"><</button>
+                <button class="next" aria-label="Наступний відгук">></button>
             </div>
-            {# Відгук 3 #}
-            <div class="review-item">
-                <div class="review-content">
-                    <span class="review-quote-icon">“</span>
-                    <p class="review-text">Ярослав відчув настрій мого музичного кліпу і підкреслив його монтажем. Працювати було легко і приємно. Топ!</p>
-                </div>
-                <div class="review-author">
-                    <img src="https://via.placeholder.com/40x40/1F1F1F/FFFFFF?text=AS" alt="Андрій Соколов" class="review-avatar">
-                    <span class="author-name">Андрій Соколов</span>
-                </div>
-            </div>
-            {# Відгук 4 #}
-            <div class="review-item">
-                <div class="review-content">
-                    <span class="review-quote-icon">“</span>
-                    <p class="review-text">Найкращий монтажер, з яким доводилось працювати. Завжди на зв'язку, пропонує круті ідеї.</p>
-                </div>
-                <div class="review-author">
-                    <img src="https://via.placeholder.com/40x40/FFD600/000000?text=MZ" alt="Максим Зайченко" class="review-avatar">
-                    <span class="author-name">Максим Зайченко</span>
-                </div>
-            </div>
-            {# Відгук 5 #}
-            <div class="review-item">
-                <div class="review-content">
-                    <span class="review-quote-icon">“</span>
-                    <p class="review-text">Результат перевершив очікування! Відео вийшло динамічним і стильним. Дякую Frame Jorney!</p>
-                </div>
-                <div class="review-author">
-                    <img src="https://via.placeholder.com/40x40/C89FFF/000000?text=YT" alt="Юлія Ткач" class="review-avatar">
-                    <span class="author-name">Юлія Ткач</span>
-                </div>
-            </div>
-             {# Відгук 6 #}
-            <div class="review-item">
-                <div class="review-content">
-                    <span class="review-quote-icon">“</span>
-                    <p class="review-text">Все чітко, швидко і по ділу. Ярослав розуміє завдання з півслова. Обов'язково звернусь ще.</p>
-                </div>
-                <div class="review-author">
-                    <img src="https://via.placeholder.com/40x40/1F1F1F/FFFFFF?text=SL" alt="Сергій Лисенко" class="review-avatar">
-                    <span class="author-name">Сергій Лисенко</span>
-                </div>
-            </div>
-             {# Відгук 7 #}
-            <div class="review-item">
-                <div class="review-content">
-                    <span class="review-quote-icon">“</span>
-                    <p class="review-text">Креативний підхід та відмінне почуття ритму. Мій проєкт заграв новими фарбами!</p>
-                </div>
-                <div class="review-author">
-                    <img src="https://via.placeholder.com/40x40/FFD600/000000?text=VM" alt="Вікторія Мельник" class="review-avatar">
-                    <span class="author-name">Вікторія Мельник</span>
-                </div>
-            </div>
-        </div>
-        <div class="reviews-controls">
-            <button class="prev" aria-label="Попередній відгук"><</button>
-            <button class="next" aria-label="Наступний відгук">></button>
         </div>
     </div>
     {# TODO: Додати реальні відгуки #}
 </section>
 
-{# --- About Section (переміщено сюди) --- #}
-<section id="about" class="about-section container" data-aos="fade-up">
-    <h2>Про мене</h2>
-    <div class="about-content">
-        <div class="about-image" data-aos="fade-right">
-            <img src="{% static 'core/media/about-photo.jpg' %}" alt="Ярослав - Відеомонтажер">
-        </div>
-        <div class="about-text" data-aos="fade-left">
-            <h3>Мене звати Ярослав.</h3>
-            <p>Я працюю з відео, щоб воно не просто інформувало — а викликало емоцію, тримало увагу та залишалось у пам'яті. Мій шлях почався на телебаченні, де я здобув безцінний досвід роботи з динамічними форматами та жорсткими дедлайнами. З часом мене захопив світ фрілансу — де я знайшов справжнє задоволення у співпраці з режисерами, брендами та креаторами, допомагаючи втілювати їхні ідеї в життя.</p>
-            <p>Так, колись мої руки тримали й тату-машинку – цей досвід навчив мене виняткової уваги до деталей та композиції. Але саме монтажний стіл став моїм полотном. Тут я поєдную ритм, звук та кадр, щоб історія на екрані не просто розказувалась, а по-справжньому відчувалась.</p>
-            <p><strong>Моя мета</strong> – не просто скласти відео, а створити емоцію, підкреслити зміст та додати ту саму "магію", яка вирізняє звичайний ролик від того, що запам'ятовується. Готовий стати частиною вашого наступного крутого проєкту!</p>
-            {# Можна додати список навичок або кнопку CTA #}
-            {# <a href="#contact" class="btn">Обговоримо проєкт?</a> #}
+{# --- About Section --- #}
+<section id="about" class="about-section" data-aos="fade-up">
+    <div class="container">
+        <h2>Про мене</h2>
+        <div class="about-content">
+            <div class="about-image" data-aos="fade-right">
+                <img src="{% static 'core/media/about-photo.jpg' %}" alt="Ярослав - Відеомонтажер">
+            </div>
+            <div class="about-text" data-aos="fade-left">
+                <h3>Мене звати Ярослав.</h3>
+                <p>Я працюю з відео, щоб воно не просто виглядало добре — а викликало емоцію, тримало увагу і залишалося в памʼяті. Замість стандартного підходу я завжди шукаю, як зробити монтаж більш живим, виразним і відчутним.</p>
+                <p>Свій шлях я розпочав у середовищі, де потрібно було працювати з темпом, структурою й точністю - на телебаченні. Саме там я навчився цінувати ритм і баланс, мислити кадром і чути історію ще до того, як її змонтовано.</p>
+                <p>Зараз я зосереджений на проєктах, які хочуть більше, ніж просто склейку. Я співпрацюю з режисерами, блогерами, брендами — з тими, хто вкладає сенс у кожне відео.</p>
+                <p><strong>Моя мета</strong> – створювати монтаж, який звучить, рухається і відчувається. Завжди відкритий до нових проєктів, які хочеться прожити.</p>
+            </div>
         </div>
     </div>
 </section>
 
 {# --- Contact Section --- #}
-<section id="contact" class="contact-section container" data-aos="fade-up">
-    <div class="contact-content">
-        <div class="contact-info" data-aos="zoom-in">
-            <h3>Маєте ідею або запитання?</h3>
-            <p>Найкращий спосіб зв'язатися зі мною та обговорити ваш проєкт – написати в Telegram. Я завжди на зв'язку!</p>
-            <a href="https://t.me/yaroslavvideoeditor" class="btn btn-telegram" target="_blank" rel="noopener noreferrer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                Написати в Telegram
-            </a>
+<section id="contact" class="contact-section" data-aos="fade-up">
+    <div class="container">
+        <div class="contact-content">
+            <div class="contact-info" data-aos="zoom-in">
+                <h3>Маєте ідею або запитання?</h3>
+                <p>Найкращий спосіб зв'язатися зі мною та обговорити ваш проєкт – написати в Telegram. Я завжди на зв'язку!</p>
+                <a href="https://t.me/yaroslavvideoeditor" class="btn btn-telegram" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    Написати в Telegram
+                </a>
+            </div>
         </div>
     </div>
 </section>

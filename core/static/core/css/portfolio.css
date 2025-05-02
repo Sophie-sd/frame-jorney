@@ -12,11 +12,23 @@
     border-bottom: none; /* Забираємо лінію */
 }
 
+/* Повертаємо стилі для сітки */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem; /* Jednakowa відстань між рядками та колонками */
+    gap: 2rem; 
 }
+
+/* --- Прибираємо стилі для Tiny Slider Портфоліо --- */
+/* .portfolio-slider-container { ... } */
+/* .portfolio-slider .tns-outer { ... } */
+/* .portfolio-slider .tns-inner { ... } */
+/* .portfolio-slide-item { ... } */
+/* .portfolio-slide-item .portfolio-item { ... } */
+/* .portfolio-controls { ... } */
+/* .portfolio-controls button { ... } */
+/* .portfolio-controls button:hover { ... } */
+/* .portfolio-controls button.tns-controls[disabled] { ... } */
 
 .portfolio-item {
     position: relative; /* Потрібно для позиціонування overlay */
@@ -28,20 +40,38 @@
 
 .portfolio-image-link {
     display: block;
-    position: relative; /* Для ::after */
-    /* margin-bottom видалено, бо текст буде зверху */
-    /* box-shadow перенесено на .portfolio-item */
+    position: relative; /* Для ::before та ::after */
+    overflow: hidden; /* Переконуємось, що іконка не вилазить */
+    border-radius: 8px;
 }
 
-/* Додаємо псевдо-елемент для градієнту */
-.portfolio-image-link::after {
+/* Додаємо псевдо-елемент ::before для гарантованої клікабельності всієї площини */
+.portfolio-image-link::before {
     content: '';
     position: absolute;
-    inset: 0; /* Розтягуємо на весь контейнер */
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    border-radius: 8px; /* Повторюємо радіус */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1; /* Має бути над img, але під play-icon-overlay (хоча overlay має pointer-events: none) */
+    /* background-color: rgba(255, 0, 0, 0.1); */ /* Тимчасово для візуалізації */
+}
+
+/* Додаємо псевдо-елемент для градієнту знизу картинки */
+.portfolio-image-link::after {
+    content: ''; 
+    position: absolute;
+    bottom: 0; /* Розташовуємо знизу */
+    left: 0;
+    right: 0;
+    height: 50%; /* Висота градієнту */
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+    opacity: 1; /* Спочатку видимий */
+    z-index: 0; /* Знижуємо z-index, щоб точно не заважав ::before (z-index: 1) */
+    transition: opacity 0.3s ease;
+    border-bottom-left-radius: 8px; /* Повторюємо заокруглення батька */
+    border-bottom-right-radius: 8px;
+    pointer-events: none; /* Не заважає клікам */
 }
 
 .portfolio-thumbnail {
@@ -54,105 +84,152 @@
     border-radius: 8px;
 }
 
+/* Завжди видимий заголовок */
+.portfolio-visible-title {
+    position: absolute;
+    bottom: 1rem; 
+    left: 1rem;  
+    right: 1rem; 
+    width: calc(100% - 2rem); 
+    margin: 0 auto; 
+    /* padding: 0.5rem 1rem; */ /* Прибираємо внутрішні відступи */
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-color);
+    z-index: 3; 
+    pointer-events: none; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Залишаємо тінь, можливо, трохи сильнішу */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center; 
+    /* background-color: rgba(0, 0, 0, 0.6); */ /* Прибираємо фон */
+    /* border-radius: 4px; */ /* Прибираємо заокруглення */
+    transition: opacity 0.3s ease; 
+}
+
+/* Блок, що з'являється при наведенні */
 .portfolio-info {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     padding: 1.5rem 1rem; /* Збільшимо падінги */
-    z-index: 2; /* Має бути над ::after */
+    z-index: 2; /* Повертаємо z-index */
     opacity: 0; /* Спочатку приховано */
     transform: translateY(20px); /* Початкова позиція для анімації */
     transition: opacity 0.4s ease, transform 0.4s ease;
     text-align: left; /* Вирівнювання тексту зліва */
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%); /* Градієнт для кращої читабельності опису */
+    border-bottom-left-radius: 8px; /* Повторюємо заокруглення */
+    border-bottom-right-radius: 8px;
 }
 
-.portfolio-info h3 {
-    margin: 0 0 0.3rem 0;
-    font-size: 1.3rem; /* Збільшимо шрифт */
-    font-weight: 700;
-    color: var(--text-color);
-}
+/* Прибираємо старий стиль для h3 всередині .portfolio-info */
+/* .portfolio-info h3 { ... } */
+/* .portfolio-info h3 a { ... } */
+/* .portfolio-info h3 a:hover { ... } */
 
-.portfolio-info h3 a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
+/* Прибираємо старий стиль для p всередині .portfolio-info */
+/* .portfolio-info p { ... } */
 
-.portfolio-info h3 a:hover {
-    color: var(--accent-yellow);
-}
-
-.portfolio-info p {
+/* Стиль для опису, що з'являється при наведенні */
+.portfolio-hover-description {
     margin: 0;
-    font-size: 0.9rem;
+    /* padding-top: 2rem; */ /* Прибираємо відступ, бо назва зникає */
+    font-size: 0.85rem;
     color: var(--text-color);
-    opacity: 0.8; /* Трохи краще видно */
+    opacity: 0.9;
+    line-height: 1.3; /* Невеликий міжрядковий інтервал */
 }
 
-/* Ефекти при наведенні на весь .portfolio-item */
+/* Розкоментовуємо hover-ефекти */
 .portfolio-item:hover {
-    transform: translateY(-8px); /* Трохи більший підйом */
-    box-shadow: 0 10px 30px rgba(200, 159, 255, 0.35), 0 6px 15px rgba(0, 0, 0, 0.3); /* Яскравіша тінь */
+    transform: translateY(-8px); 
+    box-shadow: 0 10px 30px rgba(200, 159, 255, 0.35), 0 6px 15px rgba(0, 0, 0, 0.3); 
 }
 
 .portfolio-item:hover .portfolio-thumbnail {
-    transform: scale(1.05); /* Трохи більший scale */
-    filter: brightness(0.9); /* Трохи темніше, щоб текст краще виділявся */
+    transform: scale(1.05); 
+    filter: brightness(0.9); 
 }
 
+/* Ховаємо градієнт при наведенні разом із заголовком */
 .portfolio-item:hover .portfolio-image-link::after {
-    opacity: 1; /* Показуємо градієнт */
+    opacity: 0; 
 }
 
+/* Ховаємо видимий заголовок при наведенні */
+.portfolio-item:hover .portfolio-visible-title {
+    opacity: 0;
+}
+
+/* Повертаємо правило для показу опису при наведенні */
 .portfolio-item:hover .portfolio-info {
     opacity: 1; /* Показуємо текст */
     transform: translateY(0); /* Піднімаємо текст на місце */
 }
 
-/* Адаптивність */
-@media (max-width: 992px) { /* Додаємо точку для планшетів */
+/* Стилі для іконки Play */
+.play-icon-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--accent-purple-rgb, 200, 159, 255), 0.3); /* Потрібно визначити --accent-purple-rgb у :root */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.portfolio-item:hover .play-icon-overlay {
+    opacity: 1;
+}
+
+.play-icon-overlay svg {
+    /* Стилі для SVG іконки */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+/* Адаптивність - повертаємо для сітки */
+@media (max-width: 992px) { /* Планшети */
      .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
-     .portfolio-info h3 {
-        font-size: 1.2rem;
+}
+
+@media (max-width: 768px) { /* Маленькі планшети */
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 1.5rem;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) { /* Мобільні */
     .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr); /* Залишаємо 2 колонки для невеликих планшетів */
+        grid-template-columns: 1fr; 
         gap: 1.5rem;
     }
-    .portfolio-info h3 {
-        font-size: 1.1rem;
-    }
-    /* На мобільних одразу показуємо текст, якщо ховер складний */
-    /* Або залишити ховер, тестувати на реальних пристроях */
 }
 
-@media (max-width: 480px) {
-    .portfolio-grid {
-        grid-template-columns: 1fr; /* Одна колонка на мобільних */
-        gap: 1.5rem;
-    }
-     .portfolio-info h3 {
-        font-size: 1.1rem; /* Зробимо трохи більшим на моб */
-    }
-    .portfolio-info { /* На малих екранах текст може бути завжди видимим */
-       /* opacity: 1; */
-       /* transform: translateY(0); */
-       /* background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 80%); */ /* Менш інтенсивний градієнт */
-       /* position: relative; */ /* Щоб не перекривати */
-       /* bottom: auto; */
-       /* padding: 1rem; */
-       /* text-align: center; */ /* Або залишити зліва */
-    }
-    /* Якщо вирішимо показувати текст одразу, треба сховати градієнт ::after */
-    /* .portfolio-image-link::after { display: none; } */
+/* Стиль для прихованого опису GLightbox */
+.glightbox-desc {
+    display: none;
+}
 
-    /* Поки що залишаємо hover ефект і на мобільних, але можна змінити */
+/* Стилі для приховування додаткових елементів портфоліо */
+.portfolio-item-hidden {
+    display: none;
+}
+
+/* Контейнер для кнопки "Показати більше" */
+.portfolio-show-more-btn-container {
+    text-align: center;
+    margin-top: 2.5rem; /* Додаємо відступ зверху */
 } 

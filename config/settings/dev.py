@@ -2,9 +2,14 @@ from .base import *
 
 # Налаштування для розробки
 
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [] # Можна залишити порожнім для локальної розробки
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "19e1-188-163-81-157.ngrok-free.app", # Додано адресу ngrok
+]
 
 # Використовуємо SQLite для простоти
 DATABASES = {

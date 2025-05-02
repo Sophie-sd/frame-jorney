@@ -66,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -128,10 +129,14 @@ STATICFILES_DIRS = [
 
 # Media files (User uploads)
 MEDIA_URL = '/media/'
+# Повертаємо стандартний шлях для медіафайлів (для майбутніх завантажень користувачів)
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Налаштування X-Frame-Options для дозволу iframe з цього ж сайту (потрібно для GLightbox)
+X_FRAME_OPTIONS = 'SAMEORIGIN' 

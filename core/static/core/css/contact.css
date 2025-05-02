@@ -1,9 +1,17 @@
 /* Стилі для секції Контакти (contact.css) - Мінімалістичний */
 
 .contact-section {
-    padding-top: 5rem; /* Трохи більше відступу зверху */
-    padding-bottom: 6rem; /* І знизу */
-    background-color: var(--background-color);
+    padding-top: 6rem; /* Збільшимо відступи для фону */
+    padding-bottom: 7rem;
+    padding-left: 15px; /* Залишимо базові відступи */
+    padding-right: 15px;
+    background-color: var(--shadow-block-color); /* Колір фону про всяк випадок */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../media/contacts-background.jpg"); /* Додано фон та оверлей */
+    background-size: cover; /* Масштабування фону */
+    background-position: center center; /* Центрування фону */
+    background-attachment: fixed; /* Фіксований фон при скролі (паралакс ефект) */
+    position: relative; /* Для можливих псевдоелементів */
+    overflow: hidden; /* Щоб фон не вилазив */
 }
 
 /* Прибрано стилі для h2 */
@@ -47,6 +55,8 @@
     margin-right: auto;
 }
 
+/* Стиль кнопки Telegram */
+/* TODO: Розглянути можливість об'єднання з .btn-modal-telegram (base.css) - зараз відрізняються padding та font-size */
 .btn-telegram {
     display: inline-flex; 
     align-items: center;
@@ -72,8 +82,9 @@
 /* Адаптивність для шрифтів/відступів */
 @media (max-width: 600px) {
     .contact-section {
-        padding-top: 4rem;
+        padding-top: 4rem; /* Зменшено відступи на моб */
         padding-bottom: 5rem;
+        background-attachment: scroll; /* Вимикаємо фіксований фон на мобільних */
     }
     .contact-info h3 {
         font-size: 1.8rem;

@@ -13,11 +13,11 @@
 .hero-text {
     position: absolute;
     top: 50%;
-    left: 5%; 
-    transform: translateY(-50%) skewX(-8deg);
+    left: 5%;
+    transform: translateY(-57%) skewX(-8deg);
     padding: 2.5rem 3.5rem;
     z-index: 2;
-    max-width: 55%; 
+    max-width: 55%;
     background-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
@@ -30,27 +30,20 @@
     text-align: center;
 }
 
-.hero-text h1,
-.hero-text .subtitle,
-.hero-text .btn {
-    /* Прибираємо зворотний нахил для кращої читабельності */
-    /* transform: skewX(8deg); */
-}
-
 .hero-text h1 {
-    font-size: 4.5rem; 
+    font-size: 4.5rem;
     font-weight: 700;
-    font-style: italic; 
-    line-height: 1.2; 
+    font-style: italic;
+    line-height: 1.2;
     margin-bottom: 0.8rem;
     color: var(--text-color);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .hero-text h1 .brand-name {
-    color: var(--accent-yellow); 
-    display: block; 
-    font-size: 0.8em; 
+    color: var(--accent-yellow);
+    display: block;
+    font-size: 0.8em;
 }
 
 .hero-text ::selection {
@@ -77,17 +70,17 @@
     top: 0;
     right: 0;
     width: 50%;
-    height: 95%; 
+    height: 95%;
     z-index: 1;
 }
 
 .hero-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
-    object-position: center 30%; 
+    object-fit: cover;
+    object-position: center 30%;
     display: block;
-    border-radius: 0; 
+    border-radius: 0;
 }
 
 /* --- Адаптивність Hero --- */
@@ -106,83 +99,91 @@
 
 @media (max-width: 768px) {
     .hero-section {
-        min-height: auto;
-        padding-bottom: 2rem;
+        min-height: 70vh;
+        padding-bottom: 0;
+        display: block;
+        padding-top: 0;
+        position: relative;
     }
 
     .hero-image {
-        position: relative;
-        width: 90%;
-        height: 500px; 
-        margin: 0 auto; 
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         z-index: 1;
+        order: 0;
+        margin: 0;
+    }
+
+    .hero-image img {
+        object-position: center 30%;
     }
 
     .hero-text {
         position: absolute;
-        top: 50%; 
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 85%; 
-        max-width: 450px; 
-        z-index: 2; 
-        border: none;
-        background-color: rgba(255, 255, 255, 0.15);
-        padding: 1.5rem 1.5rem;
+        width: 85%;
+        max-width: 450px;
+        z-index: 2;
+        background-color: rgba(31, 31, 31, 0.05);
+        padding: 1.8rem 1.2rem;
         text-align: center;
         border-radius: 8px;
-        -webkit-backdrop-filter: blur(4px);
-        backdrop-filter: blur(4px);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        order: 0;
         margin: 0;
-        display: block;
     }
 
     .hero-text h1 {
-        font-size: 2rem; 
+        font-size: 2rem;
         line-height: 1.2;
-        margin-bottom: 0.8rem; 
+        margin-bottom: 0.8rem;
     }
-     .hero-text .subtitle {
-        font-size: 0.9rem; 
-        max-width: 100%; 
+    .hero-text .subtitle {
+        font-size: 1rem;
+        max-width: 100%;
         margin-bottom: 1.2rem;
     }
-     .hero-text .btn {
-        padding: 10px 20px;
+    .hero-text .btn {
+        padding: 12px 25px;
         font-size: 0.9rem;
-        margin-top: 0.3rem;
-     }
+        margin-top: 0.5rem;
+    }
 }
 
 @media (max-width: 480px) {
+    .hero-section {
+        min-height: 65vh;
+    }
     .hero-image {
-        height: 400px; 
+        height: 400px;
     }
     .hero-text {
         width: 90%;
-        padding: 0.8rem 1rem;
-        top: 50%;
-        transform: translate(-50%, -50%); 
-        max-width: 90%; 
+        padding: 1.5rem 1rem;
     }
      .hero-text h1 {
-        font-size: 1.6rem; 
+        font-size: 1.8rem;
         margin-bottom: 0.6rem;
      }
     .hero-text .subtitle {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         margin-bottom: 1rem;
     }
      .hero-text .btn {
-        padding: 8px 15px;
+        padding: 10px 20px;
         font-size: 0.85rem;
      }
 }
 
 /* Стилі для інших секцій (тимчасово тут) */
 .about-section, .portfolio-section {
-    padding: 4rem 15px;
+    padding: 0.5rem 10px 2em;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -191,9 +192,7 @@
 .hero-text h1,
 .hero-text .subtitle,
 .hero-text .btn {
-    /* Прибираємо зворотний нахил для кращої читабельності */
-    /* transform: skewX(8deg); */
-    position: relative; 
+    position: relative;
 }
 
 /* ... решта стилів ... */
@@ -212,5 +211,76 @@
         /* transform: none; */
         /* position: relative; */ /* Можна прибрати, якщо не використовується */
         /* z-index: auto; */
+    }
+}
+
+/* --- Running Text --- */
+.running-text-container {
+    background-color: var(--shadow-block-color);
+    padding: 1rem 0;
+    margin-top: -5.5rem; /* Змінено з -3.5rem на -4rem */
+    margin-bottom: 3rem;
+    overflow: hidden;
+    white-space: nowrap;
+    transform: rotate(-3deg); /* Збільшуємо кут нахилу */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: relative; /* Потрібно для z-index */
+    z-index: 5; /* Переконуємось, що вона над Hero */
+}
+
+.running-text-content {
+    display: inline-block;
+    /* padding-left: 100%; */ /* Прибираємо цей відступ */
+    animation: run-text 20s linear infinite;
+}
+
+.running-text-content span {
+    display: inline-block;
+    font-size: 1.2rem; /* Трохи більший шрифт */
+    font-weight: bold;
+    color: var(--accent-yellow); /* Акцентний жовтий */
+    text-transform: uppercase; /* Все у верхньому регістрі */
+    padding: 0 2rem; /* Відступи між повтореннями */
+}
+
+@keyframes run-text {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Зміщуємо на ширину однієї фрази (оскільки їх дві) */
+    }
+}
+
+/* Адаптивність для біжучої стрічки */
+@media (max-width: 768px) {
+    .running-text-container {
+        margin-top: -2rem; /* Адаптуємо підйом */
+        margin-bottom: 2rem;
+        padding: 0.8rem 0;
+        transform: rotate(-3deg); /* Збільшено кут до -3deg */
+    }
+    .running-text-content span {
+        font-size: 1rem;
+        padding: 0 1.5rem;
+    }
+    .running-text-content {
+        animation-duration: 18s; /* Трохи швидше на менших екранах */
+    }
+}
+
+@media (max-width: 480px) {
+    .running-text-container {
+        margin-top: -1rem; /* Адаптуємо підйом */
+        margin-bottom: 1.5rem;
+        padding: 0.6rem 0;
+        transform: rotate(-2.5deg); /* Збільшено кут до -2.5deg */
+    }
+    .running-text-content span {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+    .running-text-content {
+        animation-duration: 15s;
     }
 } 
