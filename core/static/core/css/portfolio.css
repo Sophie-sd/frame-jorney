@@ -1,8 +1,8 @@
 /* Стилі для секції Портфоліо (portfolio.css) - Оновлений дизайн */
 
 .portfolio-section {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 0.5rem; /* Додано верхній відступ */
+    padding-bottom: 2rem; /* Додано нижній відступ (використаємо rem замість em) */
 }
 
 .portfolio-section h2 {

@@ -6,12 +6,16 @@ import os
 
 DEBUG = False
 
+# !!! ВАЖЛИВО ДЛЯ PRODUCTION !!!
+# Переконайтеся, що ці налаштування коректно встановлені перед деплоєм!
+
 # SECRET_KEY та ALLOWED_HOSTS потрібно брати з оточення (environment variables)
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', SECRET_KEY) # Використовуємо базовий ключ як запасний, якщо змінна не встановлена
+# !! ОБОВ'ЯЗКОВО встановіть змінну середовища DJANGO_SECRET_KEY на вашому сервері !!
 
 # Приклад отримання ALLOWED_HOSTS з env (розділених комою)
 # ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
-ALLOWED_HOSTS = [] # Потрібно заповнити перед деплоєм!
+ALLOWED_HOSTS = [] # !! ОБОВ'ЯЗКОВО заповніть список дозволених хостів (домен вашого сайту) !!
 
 # TODO: Налаштувати базу даних для production (наприклад, PostgreSQL)
 # DATABASES = {
@@ -26,6 +30,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # TODO: Налаштувати безпеку (HTTPS, HSTS, CSRF_COOKIE_SECURE, SESSION_COOKIE_SECURE і т.д.)
+# !! ОБОВ'ЯЗКОВО розкоментуйте та налаштуйте ці параметри для HTTPS !!
 # SECURE_SSL_REDIRECT = True
 # SECURE_HSTS_SECONDS = 31536000
 # SECURE_HSTS_INCLUDE_SUBDOMAINS = True

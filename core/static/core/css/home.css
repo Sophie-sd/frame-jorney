@@ -182,11 +182,7 @@
 }
 
 /* Стилі для інших секцій (тимчасово тут) */
-.about-section, .portfolio-section {
-    padding: 0.5rem 10px 2em;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+/* Видалено правило для .about-section, .portfolio-section */
 
 /* Повертаємо z-index до стандартного стану */
 .hero-text h1,

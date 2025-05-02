@@ -1,8 +1,8 @@
 /* Стилі для секції Про мене (about.css) */
 
 .about-section {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 0.5rem; /* Змінено верхній відступ */
+    padding-bottom: 2rem; /* Змінено нижній відступ */
     background-color: var(--shadow-block-color); /* Темний фон для секції */
 }
 
