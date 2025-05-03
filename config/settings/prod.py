@@ -4,8 +4,14 @@ import dj_database_url # Додаємо імпорт
 
 # Налаштування для production
 
-# Визначаємо DEBUG залежно від наявності змінної RENDER
-DEBUG = 'RENDER' not in os.environ
+# Визначаємо DEBUG:
+# 1. Перевіряємо змінну середовища DEBUG (для ручного ввімкнення на Render)
+# 2. Якщо її немає, перевіряємо відсутність змінної RENDER (стандартно для Render)
+DEBUG_ENV = os.environ.get('DEBUG', 'False').lower()
+if DEBUG_ENV in ('true', '1', 't'):
+    DEBUG = True
+else:
+    DEBUG = 'RENDER' not in os.environ # Стандартна перевірка Render
 
 # !!! ВАЖЛИВО ДЛЯ PRODUCTION !!!
 # Переконайтеся, що ці налаштування коректно встановлені перед деплоєм!
