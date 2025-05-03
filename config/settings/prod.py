@@ -1,37 +1,54 @@
 from .base import *
 import os
-# import dj_database_url # Для конфігурації бази даних з URL (напр., Heroku)
+import dj_database_url # Додаємо імпорт
 
 # Налаштування для production
 
-DEBUG = False
+# Визначаємо DEBUG залежно від наявності змінної RENDER
+DEBUG = 'RENDER' not in os.environ
 
 # !!! ВАЖЛИВО ДЛЯ PRODUCTION !!!
 # Переконайтеся, що ці налаштування коректно встановлені перед деплоєм!
 
-# SECRET_KEY та ALLOWED_HOSTS потрібно брати з оточення (environment variables)
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', SECRET_KEY) # Використовуємо базовий ключ як запасний, якщо змінна не встановлена
+# SECRET_KEY беремо з оточення
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', SECRET_KEY)
 # !! ОБОВ'ЯЗКОВО встановіть змінну середовища DJANGO_SECRET_KEY на вашому сервері !!
 
-# Приклад отримання ALLOWED_HOSTS з env (розділених комою)
-# ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
-ALLOWED_HOSTS = [] # !! ОБОВ'ЯЗКОВО заповніть список дозволених хостів (домен вашого сайту) !!
+# Налаштовуємо ALLOWED_HOSTS для Render
+ALLOWED_HOSTS = []
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+# !! Додайте сюди ваш кастомний домен, якщо він є !!
+# CUSTOM_DOMAIN = os.environ.get('CUSTOM_DOMAIN')
+# if CUSTOM_DOMAIN:
+#     ALLOWED_HOSTS.append(CUSTOM_DOMAIN)
 
-# TODO: Налаштувати базу даних для production (наприклад, PostgreSQL)
-# DATABASES = {
-#     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-# }
+
+# Налаштування бази даних PostgreSQL через DATABASE_URL
+DATABASES = {
+    'default': dj_database_url.config(
+        # Використовуємо базову SQLite як запасний варіант, якщо DATABASE_URL не задано
+        default=f'sqlite:///{BASE_DIR / "db.sqlite3"}',
+        conn_max_age=600 # Рекомендовано для постійних з'єднань
+    )
+}
+
 
 # WhiteNoise для обслуговування статичних файлів
-MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware') # Вставити після SecurityMiddleware
+# Переконуємось, що він додається ПІСЛЯ SecurityMiddleware
+# Це вже зроблено в base.py, якщо MIDDLEWARE визначено там. Якщо ні - розкоментувати:
+MIDDLEWARE.insert(MIDDLEWARE.index('django.middleware.security.SecurityMiddleware') + 1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+
+# Налаштування статичних файлів для production (коли DEBUG=False)
+# Ці налаштування тепер будуть застосовані автоматично, коли DEBUG стане False
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Директорія для збору статичних файлів командою collectstatic
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-# TODO: Налаштувати безпеку (HTTPS, HSTS, CSRF_COOKIE_SECURE, SESSION_COOKIE_SECURE і т.д.)
+# Налаштування безпеки (HTTPS, HSTS...) - розкоментувати та налаштувати на Render
 # !! ОБОВ'ЯЗКОВО розкоментуйте та налаштуйте ці параметри для HTTPS !!
-# SECURE_SSL_REDIRECT = True
+# SECURE_SSL_REDIRECT = True # Render автоматично обробляє SSL, можливо, це не потрібно
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https') # Важливо для визначення HTTPS за проксі Render
 # SECURE_HSTS_SECONDS = 31536000
 # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 # SECURE_HSTS_PRELOAD = True

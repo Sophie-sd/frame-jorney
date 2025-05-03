@@ -1,0 +1,27 @@
+services:
+  # Веб-сервіс Django
+  - type: web
+    name: frame-jorney # Можна змінити назву сервісу
+    env: python
+    plan: free # Або оберіть платний план
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: frame-jorney-db # Назва сервісу бази даних (див. нижче)
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true # Render згенерує безпечний ключ
+      - key: WEB_CONCURRENCY
+        value: 4 # Кількість gunicorn воркерів (можна налаштувати)
+      - key: DJANGO_SETTINGS_MODULE # Вказуємо production налаштування
+        value: config.settings.prod
+
+  # База даних PostgreSQL
+  - type: psql
+    name: frame-jorney-db # Назва бази даних
+    databaseName: framejorney # Ім'я бази всередині PostgreSQL
+    user: framejorney_user
+    plan: free # Або оберіть платний план
+    # postgresqlMajorVersion: "16" # Можна вказати версію PostgreSQL, якщо потрібно 
