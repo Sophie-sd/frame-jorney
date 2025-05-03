@@ -18,9 +18,9 @@ services:
       - key: DJANGO_SETTINGS_MODULE # Вказуємо production налаштування
         value: config.settings.prod
 
+databases: # <--- Бази даних тепер тут!
   # База даних PostgreSQL
-  - type: psql
-    name: frame-jorney-db # Назва бази даних
+  - name: frame-jorney-db # Назва бази даних
     databaseName: framejorney # Ім'я бази всередині PostgreSQL
     user: framejorney_user
     plan: free # Або оберіть платний план
