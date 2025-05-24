@@ -21,14 +21,13 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', SECRET_KEY)
 # !! ОБОВ'ЯЗКОВО встановіть змінну середовища DJANGO_SECRET_KEY на вашому сервері !!
 
 # Налаштовуємо ALLOWED_HOSTS для Render
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "frame-jorney.online",
+    "www.frame-jorney.online",
+]
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-# !! Додайте сюди ваш кастомний домен, якщо він є !!
-# CUSTOM_DOMAIN = os.environ.get('CUSTOM_DOMAIN')
-# if CUSTOM_DOMAIN:
-#     ALLOWED_HOSTS.append(CUSTOM_DOMAIN)
 
 
 # Налаштування бази даних PostgreSQL через DATABASE_URL
